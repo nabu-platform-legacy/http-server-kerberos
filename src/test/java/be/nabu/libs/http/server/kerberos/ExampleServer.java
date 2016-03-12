@@ -35,7 +35,7 @@ public class ExampleServer {
 //		Map<String, String> options = storeOptions();
 		instance.configure("my.example", JAASConfiguration.newKerberosEntry(options));
 		
-		newServer.getDispatcher().subscribe(HTTPRequest.class, new KerberosAuthenticator("my.example"));
+		newServer.getDispatcher().subscribe(HTTPRequest.class, new KerberosAuthenticationListener("my.example", "test", "HTTP/nirrti2.internal", "alex"));
 		newServer.getDispatcher().subscribe(HTTPRequest.class, new EventHandler<HTTPRequest, HTTPResponse>() {
 			@Override
 			public HTTPResponse handle(HTTPRequest event) {
